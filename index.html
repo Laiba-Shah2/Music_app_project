@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Music Player</title>
+</head>
+<body>
+    
+
+    <div class="outer_div">
+
+            <div class="image_border">
+                <img src="" alt="" class="song_image rotate ">
+            </div>
+
+            <div class="song_information">
+                <h3 class="title"></h3>
+                <p class="singer"></p>
+            </div>
+
+            <audio  class="song" preload="auto">
+                <source src="" type="audio/mpeg">
+            </audio>
+
+            <div id="TimeShowCase">
+
+                <p id="first"></p>
+                <input type="range" value="0" id="progress">
+                <p id="second"></p>
+
+            </div>
+
+            <div class="volume sound">
+
+                <i class="fa-solid fa-volume-low"></i>
+                <input type="range" id="volume_controller" value="50" max="100" min="0">
+
+            </div>
+
+            <div class="song_controls">
+                <button class="forback_icon" ><i class="fa-solid fa-backward"></i></button>
+
+                <button class="play_icon"><i class="fa-solid fa-play"></i></button>
+
+                <button class="forback_icon"><i class="fa-solid fa-forward"></i></button>
+            </div>
+
+        
+    </div>
+    <script src="musicFiles.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
