@@ -171,8 +171,6 @@ function updateProgressBar() {
              song.play();
              playButton.classList.replace("fa-play", "fa-pause");
     
-    
-
             progressChange = setInterval(() => {
             progress.value = song.currentTime;           
             runningTime.textContent = `${Math.floor(song.currentTime / 60) < 10 ? "0" : ""}${Math.floor(song.currentTime / 60)}:${Math.floor(song.currentTime % 60) < 10 ? "0" : ""}${Math.floor(song.currentTime % 60)}`;
