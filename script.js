@@ -98,7 +98,7 @@ events.forEach((e)=>{forbackIcon[1].addEventListener(e, playNextSong);})
 
 
 
-//to play the back song
+//to play back song
 function playBackSong() {
     if (index === 0) {
         index = arraySize - 1; // Go to the last song if at the first song
@@ -144,6 +144,8 @@ playButtonB.addEventListener("keypress",function(e){
 
     }
 })
+
+
 
 
 
