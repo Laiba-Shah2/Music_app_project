@@ -49,31 +49,44 @@ function initializaSong(){
 initializaSong();
 
 
-
 function changingSongData() {
     let eachObject = songData[index];
+    
+    // Set new audio and image sources
     audioSource.setAttribute("src", eachObject.source);
     title.textContent = eachObject.title;
     singer.textContent = eachObject.singer;
     image.setAttribute("src", eachObject.image);
 
-    song.pause(); // Pause any current playback before loading a new source
-    song.load(); // Load the new audio source
+    // Load the audio and wait until it is ready before playing
+    song.load();
+    
+    // Add an event listener to play only once the audio is loaded
+    song.addEventListener("canplaythrough", () => {
+        if (!playButton.classList.contains("fa-play")) { 
+            // Handle play state and rotation
+            song.play();
+            image.style.transform = "rotate(0deg)";
+            image.style.animation = "none"; // Stop previous animation
 
-    // Wait for audio to be ready before playing
-    song.oncanplaythrough = () => {
-        if (!playButton.classList.contains("fa-play")) {
-            song.play().catch((error) => console.error("Error playing audio:", error));
-            image.style.animation = "infiniteRotation 23s linear infinite";
-            image.style.animationPlayState = "running";
+            setTimeout(() => {
+                image.style.animation = "infiniteRotation 23s linear infinite";
+                image.style.animationPlayState = "running";
+            }, 0);
+
             updateProgressBar();
         } else {
+            // If paused, pause the song and reset the image state
+            song.pause();
             image.style.animationPlayState = "paused";
             playButton.classList.replace("fa-pause", "fa-play");
             clearInterval(progressChange);
         }
-    };
+    }, { once: true }); // Ensures the listener runs only once
 }
+
+
+
 
 
 //to play next song
