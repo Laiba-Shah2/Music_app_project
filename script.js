@@ -49,43 +49,36 @@ function initializaSong(){
 initializaSong();
 
 
-function changingSongData() {
+
+function changingSongData(){
+
     let eachObject = songData[index];
-    
-    // Set new audio and image sources
     audioSource.setAttribute("src", eachObject.source);
     title.textContent = eachObject.title;
     singer.textContent = eachObject.singer;
-    image.setAttribute("src", eachObject.image);
-
-    // Load the audio and wait until it is ready before playing
+    image.setAttribute("src", eachObject.image)
     song.load();
-    
-    // Add an event listener to play only once the audio is loaded
-    song.addEventListener("canplaythrough", () => {
-        if (!playButton.classList.contains("fa-play")) { 
-            // Handle play state and rotation
-            song.play();
-            image.style.transform = "rotate(0deg)";
-            image.style.animation = "none"; // Stop previous animation
+    if (playButton.classList.contains("fa-play")) {
 
-            setTimeout(() => {
-                image.style.animation = "infiniteRotation 23s linear infinite";
-                image.style.animationPlayState = "running";
-            }, 0);
+        song.pause()
+        image.style.animationPlayState = "paused"
+        playButton.classList.replace("fa-pause", "fa-play")
+       clearInterval(progressChange);
 
-            updateProgressBar();
-        } else {
-            // If paused, pause the song and reset the image state
-            song.pause();
-            image.style.animationPlayState = "paused";
-            playButton.classList.replace("fa-pause", "fa-play");
-            clearInterval(progressChange);
-        }
-    }, { once: true }); // Ensures the listener runs only once
+    }
+    else{ 
+        image.style.transform = "rotate(0deg)";
+        image.style.animation = "none"; // Stop any previous animation   
+        // Start rotation animation
+        setTimeout(() => {
+            image.style.animation = "infiniteRotation 23s linear infinite";
+            image.style.animationPlayState = "running";
+        }, 0);
+
+        
+        updateProgressBar();}
+
 }
-
-
 
 
 
