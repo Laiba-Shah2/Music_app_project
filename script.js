@@ -55,7 +55,7 @@ function changingSongData() {
         playButton.classList.replace("fa-pause", "fa-play");
         clearInterval(progressChange);
     } else {
-        image.style.animation = "infiniteRotation 23s linear infinite";
+        image.style.animation = "infiniteRotation 20s linear infinite";
         image.style.animationPlayState = "running";
         updateProgressBar();
     }
@@ -83,7 +83,7 @@ function playPauseSong(event) {
     if (playButton.classList.contains("fa-play")) {
         song.play().then(() => { // Play from current time, don't reload
             playButton.classList.replace("fa-play", "fa-pause");
-            image.style.animation = "infiniteRotation 23s linear infinite";
+            image.style.animation = "infiniteRotation 20s linear infinite";
             image.style.animationPlayState = "running";
             updateProgressBar();
         }).catch(error => {
