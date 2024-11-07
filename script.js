@@ -1,7 +1,7 @@
 //variables definition
 let index = 0;
 let forbackIcon = document.body.querySelectorAll(".forback_icon");
-let audioSource = document.body.querySelector(".song source"); //Laiba it is good pra ctice to add semi (;) colen at the end or every statement
+let audioSource = document.body.querySelector(".song source"); 
 let title = document.body.querySelector(".title");
 let singer = document.body.querySelector(".singer");
 let image = document.body.querySelector(".song_image");
@@ -17,8 +17,8 @@ let totalTime = document.body.querySelector("#second");
 let arraySize = songData.length;
 let progressChange;
 let songDuration;
-let events = ["touchend", "click"]; //Laiba beta always formate your code after writing some lins of code by pressing alt+shif+F
-let currentTime = song.currentTime; //always try to add keywords when everywhere when making veriables
+let events = ["touchend", "click"]; 
+let currentTime = song.currentTime; 
 
 //on loading page song should be paused
 function initializaSong() {
@@ -70,7 +70,7 @@ events.forEach(e => forbackIcon[1].addEventListener(e, playNextSong));
 
 //to play back song
 function playBackSong() {
-    index = (index - 1 + arraySize) % arraySize; //simplified modulus to reset index to end if before first song
+    index = (index - 1 + arraySize) % arraySize; //simplified modulus to reset index after first song
     changingSongData();
 }
 events.forEach(e => forbackIcon[0].addEventListener(e, playBackSong));
